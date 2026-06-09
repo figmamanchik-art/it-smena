@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коды для учеников</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --primary-color: #007aff;
+            --primary-hover: #0056b3;
+            --code-bg: #1e1e1e;
+            --code-text: #d4d4d4;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 650px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #111;
+        }
+        p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .code-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 15px;
+            line-height: 1.5;
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .success-toast {
+            display: none;
+            text-align: center;
+            color: #28a745;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Материалы к уроку</h1>
+    <p>Нажмите на кнопку ниже, чтобы скопировать код в буфер обмена.</p>
+    
+    <div class="code-wrapper">
+<!-- НАЧАЛО ВАШЕГО ТЕКСТА -->
+<pre id="code-block">
+// Вставьте ваш код, домашнее задание или текст сюда.
+// Все пробелы и переносы строк сохранятся.
+
+function helloWorld() {
+    console.log("Привет, ученики!");
+}
+</pre>
+<!-- КОНЕЦ ВАШЕГО ТЕКСТА -->
+    </div>
+
+    <button class="btn" onclick="copyCode()">Скопировать весь текст</button>
+    <div class="success-toast" id="toast">Текст успешно скопирован!</div>
+</div>
+
+<script>
+    function copyCode() {
+        const codeText = document.getElementById('code-block').innerText;
+        
+        navigator.clipboard.writeText(codeText).then(() => {
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            
+            const btn = document.querySelector('.btn');
+            btn.textContent = 'Скопировано!';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+                btn.textContent = 'Скопировать весь текст';
+            }, 2500);
+        }).catch(err => {
+            alert('Не удалось скопировать. Пожалуйста, выделите текст вручную.');
+        });
+    }
+</script>
+
+</body>
+</html>
