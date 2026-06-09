@@ -100,8 +100,15 @@
     <div class="code-wrapper">
 <!-- НАЧАЛО ВАШЕГО ТЕКСТА -->
 <pre id="code-block">
-// Вставьте ваш код, домашнее задание или текст сюда.
-// Все пробелы и переносы строк сохранятся.
+ImageButton next_btn = findViewById(R.id.next_main);
+	next_btn.setOnClickListener(new View.OnClickListener() {
+		@Override
+		public void onClick(View view) {
+			Intent intent = new Intent(MainActivity.this,menu.class);
+			StartActivity(intent);
+		}
+	});
+
 
 function helloWorld() {
     console.log("Привет, ученики!");
